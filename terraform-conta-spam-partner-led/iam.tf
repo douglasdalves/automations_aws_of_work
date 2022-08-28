@@ -77,7 +77,12 @@ resource "aws_iam_group_policy" "Policy_Billing" {
 ## ----------------------------------------------------------##
 resource "aws_iam_user" "user" {
   name = "user-compass-config"
-  tags = var.registro
+  tags = merge(var.registro, local.common_tags)
+    lifecycle {
+    ignore_changes = [
+      tags["CreatedDate"]
+    ]
+  }
 }
 
 resource "aws_iam_group" "group" {

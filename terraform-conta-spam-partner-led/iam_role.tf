@@ -7,7 +7,12 @@
 
 resource "aws_iam_role" "role_AccountAdmin" {
   name = "CrossAccountAdmin"
-  tags = var.registro
+  tags = merge(var.registro, local.common_tags)
+    lifecycle {
+    ignore_changes = [
+      tags["CreatedDate"]
+    ]
+  }
 
   assume_role_policy = <<EOF
 {
@@ -34,12 +39,16 @@ resource "aws_iam_role_policy_attachment" "attach_AccountAdmin" {
   policy_arn = data.aws_iam_policy.policy_AccountAdmin.arn
 }
 
-
 # Role CrossAccountSignin
 
 resource "aws_iam_role" "role_AccountSignin" {
   name = "CrossAccountSignin"
-  tags = var.registro
+  tags = merge(var.registro, local.common_tags)
+    lifecycle {
+    ignore_changes = [
+      tags["CreatedDate"]
+    ]
+  }
 
   assume_role_policy = <<EOF
 {
@@ -57,8 +66,6 @@ resource "aws_iam_role" "role_AccountSignin" {
 EOF
 }
 
-
-#https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy
 data "aws_iam_policy" "policy_ReadOnlyAccess" {
   name = "ReadOnlyAccess"
 }
@@ -79,10 +86,14 @@ resource "aws_iam_role_policy_attachment" "attach_AccountSignin1" {
 
 # Role CrossAccountBilling
 
-
 resource "aws_iam_role" "role_Billing" {
   name = "CrossAccountBilling"
-  tags = var.registro
+  tags = merge(var.registro, local.common_tags)
+    lifecycle {
+    ignore_changes = [
+      tags["CreatedDate"]
+    ]
+  }
 
   assume_role_policy = <<EOF
 {

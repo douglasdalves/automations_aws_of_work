@@ -1,6 +1,4 @@
 
-#https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/account_alternate_contact
-
 resource "aws_account_alternate_contact" "billing" {
 
   alternate_contact_type = "BILLING"

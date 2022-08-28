@@ -1,13 +1,13 @@
 variable "aws_region" {
   type        = string
-  description = ""
+  description = "Preecha a região a ser usada."
   default     = "us-east-1"
 }
 
 #-----------------------------------------------------
 variable "aws_profile" {
   type        = string
-  description = ""
+  description = "Informar o profile configurado no aws cli"
   default     = "payer-clickbus"
 }
 
