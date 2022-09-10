@@ -11,12 +11,11 @@ variable "aws_profile" {
   default     = "payer-clickbus"
 }
 
-# variable "aws_account_id" {
-#   type        = number
-#   description = ""
-#   default     = 060697273175
-# }
-
+variable "root_details" {
+  type        = string
+  description = "Preencher com o target_ID do organizarion - root"
+  default     = "r-qlsg"
+}
 
 variable "registro" {
   type        = map(string)
