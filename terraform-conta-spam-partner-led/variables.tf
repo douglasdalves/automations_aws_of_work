@@ -18,6 +18,10 @@ variable "aws_profile" {
 #   default     = 
 # }
 
+variable "cross_account_arn" {
+  type    = string
+  default = "arn:aws:iam::766581111222:root"
+}
 
 variable "registro" {
   type        = map(string)
