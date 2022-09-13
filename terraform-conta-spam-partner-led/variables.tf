@@ -12,15 +12,18 @@ variable "aws_profile" {
   #default     = "demonstracao-perito"
 }
 
-# variable "aws_account_id" {
-#   type        = number
-#   description = ""
-#   default     = 
-# }
-
 variable "cross_account_arn" {
   type    = string
   default = "arn:aws:iam::766581111222:root"
+}
+
+variable "enable_cloudtrail" {
+  type    = bool
+  default = true
+}
+variable "is_multi_region_trail" {
+  type    = bool
+  default = false
 }
 
 variable "registro" {
