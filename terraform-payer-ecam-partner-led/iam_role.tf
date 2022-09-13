@@ -8,7 +8,7 @@
 resource "aws_iam_role" "role_AccountAdmin" {
   name = "CrossAccountAdmin"
   tags = merge(var.registro, local.common_tags)
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
     ]
@@ -21,7 +21,7 @@ resource "aws_iam_role" "role_AccountAdmin" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::766581111222:root"
+                "AWS": "${var.cross_account_arn}"
             },
             "Action": "sts:AssumeRole"
         }
@@ -44,7 +44,7 @@ resource "aws_iam_role_policy_attachment" "attach_AccountAdmin" {
 resource "aws_iam_role" "role_AccountSignin" {
   name = "CrossAccountSignin"
   tags = merge(var.registro, local.common_tags)
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
     ]
@@ -57,7 +57,7 @@ resource "aws_iam_role" "role_AccountSignin" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::766581111222:root"
+                "AWS": "${var.cross_account_arn}"
             },
             "Action": "sts:AssumeRole"
         }
@@ -89,7 +89,7 @@ resource "aws_iam_role_policy_attachment" "attach_AccountSignin1" {
 resource "aws_iam_role" "role_Billing" {
   name = "CrossAccountBilling"
   tags = merge(var.registro, local.common_tags)
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
     ]
@@ -102,7 +102,7 @@ resource "aws_iam_role" "role_Billing" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::766581111222:root"
+                "AWS": "${var.cross_account_arn}"
             },
             "Action": "sts:AssumeRole"
         }
