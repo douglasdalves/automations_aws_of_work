@@ -8,7 +8,7 @@ variable "aws_region" {
 variable "aws_profile" {
   type        = string
   description = "Informar o profile configurado no aws cli"
-  default     = "payer-clickbus"
+  default     = "Digite o seu"
 }
 
 variable "root_details" {

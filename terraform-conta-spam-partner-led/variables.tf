@@ -8,8 +8,7 @@ variable "aws_region" {
 variable "aws_profile" {
   type        = string
   description = "Informar o profile configurado no aws cli"
-  default     = "lab-terraform"
-  #default     = "demonstracao-perito"
+  default     = "Digite o seu"
 }
 
 variable "cross_account_arn" {
