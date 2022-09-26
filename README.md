@@ -1,8 +1,6 @@
 <h1 align="center"> Automações de código em Terraform </h1>
 
-<div style="display: inline_block"><br>
-  <img align="center" alt="Repositório Automações de Tf" height="30" width="40" src="https://imgur.com/gallery/SrIiOc7">
-<div>
+![descrição da imagem](https://1drv.ms/u/s!Aq_1ShL0E6YquV-pvhsSiHrV1XJR?e=Yf5zvk)
 
 ## Badges
 

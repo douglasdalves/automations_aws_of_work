@@ -64,12 +64,12 @@ variable "resource_name_prefix" {
 #-----------------------------------------------------
 variable "aws_profile" {
   type        = string
-  description = ""
-  default     = "lab-terraform"
+  description = "Informar o profile configurado no aws cli"
+  default     = "Digite o seu"
 }
 
-variable "aws_account_id" {
-  type        = number
-  description = ""
-  default     = 060697273175
+variable "aws_region" {
+  type        = string
+  description = "Preecha a região a ser usada."
+  default     = "us-east-1"
 }
