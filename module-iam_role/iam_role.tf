@@ -3,11 +3,11 @@
 ## ----------------------------------------------------------##
 
 
-# Role CrossAccountAdmin
+# Role CrossAccountAdmin #
 
 resource "aws_iam_role" "role_AccountAdmin" {
   name = "CrossAccountAdmin"
-  tags = merge(var.registro, local.common_tags)
+  tags = merge(var.registro_role, local.common_tags)
   lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
@@ -21,7 +21,7 @@ resource "aws_iam_role" "role_AccountAdmin" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.cross_account_arn}"
+                "AWS": "arn:aws:iam::${var.cross_account_arn}:root"
             },
             "Action": "sts:AssumeRole"
         }
@@ -39,11 +39,11 @@ resource "aws_iam_role_policy_attachment" "attach_AccountAdmin" {
   policy_arn = data.aws_iam_policy.policy_AccountAdmin.arn
 }
 
-# Role CrossAccountSignin
+# Role CrossAccountSignin #
 
 resource "aws_iam_role" "role_AccountSignin" {
   name = "CrossAccountSignin"
-  tags = merge(var.registro, local.common_tags)
+  tags = merge(var.registro_role, local.common_tags)
   lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
@@ -57,7 +57,7 @@ resource "aws_iam_role" "role_AccountSignin" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.cross_account_arn}"
+                "AWS": "arn:aws:iam::${var.cross_account_arn}:root"
             },
             "Action": "sts:AssumeRole"
         }
@@ -84,11 +84,11 @@ resource "aws_iam_role_policy_attachment" "attach_AccountSignin1" {
   policy_arn = data.aws_iam_policy.policy_ReadOnlyAccess.arn
 }
 
-# Role CrossAccountBilling
+# Role CrossAccountBilling #
 
 resource "aws_iam_role" "role_Billing" {
   name = "CrossAccountBilling"
-  tags = merge(var.registro, local.common_tags)
+  tags = merge(var.registro_role, local.common_tags)
   lifecycle {
     ignore_changes = [
       tags["CreatedDate"]
@@ -102,7 +102,7 @@ resource "aws_iam_role" "role_Billing" {
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.cross_account_arn}"
+                "AWS": "arn:aws:iam::${var.cross_account_arn}:root"
             },
             "Action": "sts:AssumeRole"
         }

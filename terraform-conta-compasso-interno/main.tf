@@ -29,3 +29,17 @@ locals {
     CreatedDate = local.brasilia_tz
   }
 }
+
+########################
+#
+## Chamada de Modulos ##
+#
+########################
+
+module "contato" {
+  source = "../module-contato"
+}
+
+module "role_crossAccount" {
+  source = "../module-iam_role"
+}
