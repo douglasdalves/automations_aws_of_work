@@ -30,5 +30,16 @@ locals {
   }
 }
 
-### Get Account id current
-data "aws_caller_identity" "current" {}
+## Chamada de Modulos ##
+#
+module "contato" {
+  source = "../module-contato"
+}
+
+module "role_crossAccount" {
+  source = "../module-iam_role"
+}
+
+module "trails-s3-logs" {
+  source = "../module-trails-s3-logs"
+}

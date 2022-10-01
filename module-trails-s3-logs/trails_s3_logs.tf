@@ -36,7 +36,7 @@ resource "aws_cloudtrail" "main" {
 resource "aws_s3_bucket" "enable_cloudtrail" {
   count  = var.enable_cloudtrail ? 1 : 0
   bucket = "conta-projeto-trail-${data.aws_caller_identity.current.account_id}"
-  tags   = var.registro
+  tags   = var.registro_s3
 }
 
 resource "aws_s3_bucket_acl" "enable_acl" {
@@ -100,4 +100,11 @@ data "aws_iam_policy_document" "role_policy" {
       ]
     }
   }
+}
+
+### Get Account id current
+data "aws_caller_identity" "current" {}
+
+output "s3_bucket_cloudtrail" {
+  value = aws_s3_bucket.enable_cloudtrail.0.id
 }
