@@ -7,7 +7,7 @@
 resource "aws_organizations_policy" "policy_billing" {
   name        = "Compass-deny-billing"
   description = "Policy que bloqueia o acesso ao billing pelo cliente."
-  tags = var.registro
+  tags        = var.registro
 
   content = <<CONTENT
 {
@@ -43,7 +43,7 @@ CONTENT
 resource "aws_organizations_policy" "policy_supportDeny" {
   name        = "SCPCompassoUOL-SupportDeny"
   description = "SCP Compasso UOL - Support Deny"
-  tags = var.registro
+  tags        = var.registro
 
   content = <<CONTENT
 {
@@ -80,7 +80,7 @@ CONTENT
 resource "aws_organizations_policy" "policy_ProtectAWSSSO" {
   name        = "SCPCompassoUOL-ProtectAWSSSO"
   description = "SCP Compasso UOL - Protect Settings on AWS SSO"
-  tags = var.registro
+  tags        = var.registro
 
   content = <<CONTENT
 {

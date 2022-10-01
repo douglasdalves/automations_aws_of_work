@@ -1,8 +1,8 @@
 
 variable "cross_account_arn" {
-  type    = number
+  type        = number
   description = "Account ID da role de CrossAccount"
-  #default = 471784020190
+  default     = 471784020190
   #default = 766581111222
 }
 
@@ -11,8 +11,8 @@ variable "registro_role" {
   description = "Tags do terraform para contas."
 
   default = {
-    "Owner"       = "Compass-cloud-n1"
-    "ManagedBy"   = "Terraform"
+    "Owner"     = "Compass-cloud-n1"
+    "ManagedBy" = "Terraform"
   }
 }
 
