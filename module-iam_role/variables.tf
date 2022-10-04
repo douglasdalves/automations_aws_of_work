@@ -2,8 +2,6 @@
 variable "cross_account_arn" {
   type        = number
   description = "Account ID da role de CrossAccount"
-  default     = 471784020190
-  #default = 766581111222
 }
 
 variable "registro_role" {
