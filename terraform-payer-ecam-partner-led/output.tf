@@ -10,7 +10,3 @@ data "template_file" "secret" {
 output "brand_new_user_secret" {
   value = data.template_file.secret.rendered
 }
-
-output "s3_bucket_cloudtrail" {
-  value = aws_s3_bucket.enable_cloudtrail.0.id
-}
