@@ -47,3 +47,7 @@ module "role_crossAccount" {
 
   #default = 471784020190
   #default = 766581111222
+
+module "grupo_admin" {
+  source = "../module-iam_group"
+}

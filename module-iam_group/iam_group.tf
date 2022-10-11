@@ -1,17 +1,10 @@
 ## ----------------------------------------------------------##
-## Configuracões de grupo e user
+## Grupo e policy
 ## ----------------------------------------------------------##
-resource "aws_iam_user_group_membership" "group_user" {
-  user = aws_iam_user.user.name
 
-  groups = [
-    aws_iam_group.group.name,
-  ]
+resource "aws_iam_group" "group" {
+  name = "admin"
 }
-
-## ----------------------------------------------------------##
-## Policys do grupo
-## ----------------------------------------------------------##
 
 resource "aws_iam_group_policy" "policy_admin" {
   name  = "AdministratorAccess"
@@ -73,22 +66,5 @@ resource "aws_iam_group_policy" "Policy_Billing" {
 }
 
 ## ----------------------------------------------------------##
-## Dados do iam
+## 
 ## ----------------------------------------------------------##
-resource "aws_iam_user" "user" {
-  name = "user-compass-config"
-  tags = merge(var.registro, local.common_tags)
-  lifecycle {
-    ignore_changes = [
-      tags["CreatedDate"]
-    ]
-  }
-}
-
-resource "aws_iam_group" "group" {
-  name = "admin"
-}
-
-resource "aws_iam_access_key" "brand_new_user" {
-  user = aws_iam_user.user.name
-}
