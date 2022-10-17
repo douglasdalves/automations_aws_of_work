@@ -14,7 +14,7 @@ variable "aws_profile" {
 variable "root_details" {
   type        = string
   description = "Preencher com o target_ID do organizarion - root"
-  default     = "r-qlsg"
+  default     = "Digite o seu"
 }
 
 variable "registro" {
@@ -26,4 +26,13 @@ variable "registro" {
     "Environment" = "Payer-ECAM-Partnet-led"
     "ManagedBy"   = "Terraform"
   }
+}
+
+variable "id_account_cross" {
+  type        = number
+  description = "Account ID da role de CrossAccount"
+  default = "766581111222"
+
+#   default - payer-geral  = 471784020190
+#   default - payer-interna = 766581111222
 }

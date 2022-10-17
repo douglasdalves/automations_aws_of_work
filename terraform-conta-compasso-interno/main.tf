@@ -42,11 +42,8 @@ module "contato" {
 
 module "role_crossAccount" {
   source = "../module-iam_role"
-  cross_account_arn = 471784020190  
+  cross_account_arn = "${var.id_account_cross}"
 }
-
-  #default = 471784020190
-  #default = 766581111222
 
 module "grupo_admin" {
   source = "../module-iam_group"

@@ -21,3 +21,12 @@ variable "registro" {
     "ManagedBy"   = "Terraform"
   }
 }
+
+variable "id_account_cross" {
+  type        = number
+  description = "Account ID da role de CrossAccount"
+  default = "766581111222"
+
+#   default - payer-geral  = 471784020190
+#   default - payer-interna = 766581111222
+}
