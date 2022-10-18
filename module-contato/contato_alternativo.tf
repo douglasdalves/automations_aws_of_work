@@ -5,8 +5,8 @@ resource "aws_account_alternate_contact" "billing" {
 
   name          = "Faturamento UOLDIVEO"
   title         = "AWS-Faturamento-Abuse"
-  email_address = "${var.email_billing}"
-  phone_number  = "${var.telefone_billing}"
+  email_address = var.email_billing
+  phone_number  = var.telefone_billing
 }
 
 
@@ -16,8 +16,8 @@ resource "aws_account_alternate_contact" "operations" {
 
   name          = "Operação UOLDIVEO"
   title         = "AWS-Operação-Abuse"
-  email_address = "${var.email_operations}"
-  phone_number  = "${var.telefone_operations}"
+  email_address = var.email_operations
+  phone_number  = var.telefone_operations
 }
 
 
@@ -27,6 +27,6 @@ resource "aws_account_alternate_contact" "securty" {
 
   name          = "Abuse UOL"
   title         = "AWS-Seguranca-Abuse"
-  email_address = "${var.email_securty}"
-  phone_number  = "${var.telefone_securty}"
+  email_address = var.email_securty
+  phone_number  = var.telefone_securty
 }

@@ -41,8 +41,8 @@ module "contato" {
 }
 
 module "role_crossAccount" {
-  source = "../module-iam_role"
-  cross_account_arn = "${var.id_account_cross}"
+  source            = "../module-iam_role"
+  cross_account_arn = var.id_account_cross
 }
 
 module "grupo_admin" {
