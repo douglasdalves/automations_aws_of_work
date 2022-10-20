@@ -44,3 +44,7 @@ module "role_crossAccount" {
 module "trails-s3-logs" {
   source = "../module-trails-s3-logs"
 }
+
+module "grupo_admin" {
+  source = "../module-iam_group"
+}
