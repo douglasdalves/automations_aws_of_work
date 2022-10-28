@@ -37,14 +37,14 @@ locals {
 ########################
 
 module "contato" {
-  source = "../module-contato"
+  source = "../../module-contato"
 }
 
 module "role_crossAccount" {
-  source            = "../module-iam_role"
+  source            = "../../module-iam_role"
   cross_account_arn = var.id_account_cross
 }
 
 module "grupo_admin" {
-  source = "../module-iam_group"
+  source = "../../module-iam_group"
 }
