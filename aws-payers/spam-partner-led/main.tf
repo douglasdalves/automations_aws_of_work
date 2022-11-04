@@ -55,5 +55,7 @@ module "grupo_admin" {
 }
 
 module "organization_scp" {
-  source = "../../module-polices-organization"
+  source       = "../../module-polices-organization"
+  root_details = var.organization_id
+  enable_scp   = var.attach_scp
 }

@@ -8,13 +8,17 @@ variable "aws_region" {
 variable "aws_profile" {
   type        = string
   description = "Informar o profile configurado no aws cli"
-  default     = "Digite o seu"
+  #default     = "Digite o seu"
 }
 
-variable "root_details" {
+variable "organization_id" {
   type        = string
   description = "Preencher com o target_ID do organizarion - root"
-  default     = "Digite o seu"
+  #default     = "Digite o seu"
+}
+
+variable "attach_scp" {
+  default = true
 }
 
 variable "registro" {
