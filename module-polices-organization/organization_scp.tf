@@ -6,7 +6,7 @@ resource "aws_organizations_policy_attachment" "root" {
 }
 
 resource "aws_organizations_policy_attachment" "root1" {
-  policy_id = aws_organizations_policy.policy_compassouol_recommended.id
+  policy_id = aws_organizations_policy.policy_ProtectAssumeRole.id
   target_id = var.root_details
 }
 

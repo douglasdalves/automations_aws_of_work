@@ -27,8 +27,12 @@ resource "aws_organizations_policy" "policy_billing" {
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_Billing_*",
             "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoCloudTeam_*",
-            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*"
+            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*",
+            "arn:aws:iam::*:role/CrossAccountAdmin",
+            "arn:aws:iam::*:role/CrossAccountBilling",
+            "arn:aws:iam::*:root"
           ]
         }
       }
@@ -77,9 +81,9 @@ CONTENT
 
 # SCPCompassoUOL-ProtectAWSSSO
 
-resource "aws_organizations_policy" "policy_ProtectAWSSSO" {
-  name        = "SCPCompassoUOL-ProtectAWSSSO"
-  description = "SCP Compasso UOL - Protect Settings on AWS SSO"
+resource "aws_organizations_policy" "policy_ProtectAssumeRole" {
+  name        = "SCPCompassoUOL-CrossAccountDenny"
+  description = "Protege conta a exclusão das assumes roles da compass"
   tags        = var.registro_polices
 
   content = <<CONTENT
@@ -87,18 +91,39 @@ resource "aws_organizations_policy" "policy_ProtectAWSSSO" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "ProtectSSO",
+      "Sid": "ProtectAssumeRole",
       "Effect": "Deny",
-      "Action": [
-        "sso:*",
-        "sso-directory:*"
+      "Action": "*",
+      "Resource": [
+        "arn:aws:iam::*:role/CrossAccountSignin",
+        "arn:aws:iam::*:role/CrossAccountBilling",
+        "arn:aws:iam::*:role/CrossAccountAdmin"
       ],
-      "Resource": "*",
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoCloudTeam_*",
-            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*"
+            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*",
+            "arn:aws:iam::*:role/CrossAccountAdmin",
+            "arn:aws:iam::*:role/CrossAccountSignin"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "ProtectAssumeRoleBilling",
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": [
+        "arn:aws:iam::*:role/uoldiveo-mgmt-cost",
+        "arn:aws:iam::*:role/compasso-mgmt-cost"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*",
+            "arn:aws:iam::*:role/CrossAccountAdmin",
+            "arn:aws:iam::*:role/CrossAccountSignin",
+            "arn:aws:iam::*:role/CrossAccountBilling"
           ]
         }
       }
@@ -170,14 +195,14 @@ resource "aws_organizations_policy" "policy_compassouol_recommended" {
         "arn:aws:iam::*:role/CrossAccountSignin",
         "arn:aws:iam::*:role/CrossAccountLambdaBilling",
         "arn:aws:iam::*:role/CrossAccountAdmin",
-        "arn:aws:iam::*:role/uoldiveo-mgmt-cost"
+        "arn:aws:iam::*:role/uoldiveo-mgmt-cost",
+        "arn:aws:iam::*:role/compasso-mgmt-cost"
       ],
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
             "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_CompassoAdmins_*",
-            "arn:aws:iam::*:role/CrossAccountAdmin",
-            "arn:aws:iam::*:role/uoldiveo-mgmt-cost"
+            "arn:aws:iam::*:role/CrossAccountAdmin"
           ]
         }
       }
