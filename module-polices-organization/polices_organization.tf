@@ -83,7 +83,7 @@ CONTENT
 
 resource "aws_organizations_policy" "policy_ProtectAssumeRole" {
   name        = "SCPCompassoUOL-CrossAccountDenny"
-  description = "Protege conta a exclusão das assumes roles da compass"
+  description = "SCP para bloquear a exclusão das roles da compass"
   tags        = var.registro_polices
 
   content = <<CONTENT
