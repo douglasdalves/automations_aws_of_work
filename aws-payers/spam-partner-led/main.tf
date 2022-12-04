@@ -59,3 +59,7 @@ module "organization_scp" {
   root_details = var.organization_id
   enable_scp   = var.attach_scp
 }
+
+# module "usage_report_s3" {
+#   source = "../../module-usage-report"
+# }

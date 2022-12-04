@@ -38,8 +38,8 @@ resource "aws_s3_bucket" "usage_report" {
 resource "aws_s3_bucket_logging" "my_logging" {
   bucket = aws_s3_bucket.usage_report.id
 
-    target_bucket = aws_s3_bucket.usage_report.id
-    target_prefix = "${data.aws_caller_identity.current.account_id}-aws-billing-cur/Billing-CUR"
+  target_bucket = aws_s3_bucket.usage_report.id
+  target_prefix = "${data.aws_caller_identity.current.account_id}-aws-billing-cur/Billing-CUR"
 }
 
 resource "aws_s3_bucket_acl" "bucket_usage_acl" {
